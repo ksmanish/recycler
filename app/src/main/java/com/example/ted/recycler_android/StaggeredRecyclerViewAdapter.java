@@ -1,6 +1,7 @@
 package com.example.ted.recycler_android;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -54,6 +55,10 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
             public void onClick(View v) {
                 Log.d(TAG, "onClick: clicked on: " + mNames.get(position));
                 Toast.makeText(mContext, mNames.get(position), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, GalleryActivity.class);
+                intent.putExtra("image_url", mImageUrls.get(position));
+                intent.putExtra("image_name", mNames.get(position));
+                mContext.startActivity(intent);
             }
         });
     }
